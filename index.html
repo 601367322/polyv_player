@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!--    <script src='//code.jquery.com/jquery-3.7.0.min.js'></script>-->
+    <script type="text/javascript">
+        // $.ajax({
+        //     type: "GET",
+        //     url: "https://api-shuangshi.tengyue360.com/education/api/polyv/auth/video",
+        //     data: {vid: "34fc775f9811c6e80713b6711e052533_3"},
+        //     headers: {"X-Content-Type-Options": "nosniff", 'Content-Type': 'application/json'},
+        //     contentType: "application/json; charset=utf-8",
+        //     success: function (data) {
+        //         alert(data);
+        //     }
+        // });
+        // $.getJSON("https://api-shuangshi.tengyue360.com/education/api/polyv/auth/video?callback=?",{vid:"34fc775f9811c6e80713b6711e052533_3"},(data)=>{
+        //     alert(data);
+        // });
+
+    </script>
+    <style>
+        /*去除默认样式*/
+        html, body, div, span, applet, object, iframe,
+        h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+        a, abbr, acronym, address, big, cite, code,
+        del, dfn, em, img, ins, kbd, q, s, samp,
+        small, strike, strong, sub, sup, tt, var,
+        b, u, i, center,
+        dl, dt, dd, ol, ul, li,
+        fieldset, form, label, legend,
+        table, caption, tbody, tfoot, thead, tr, th, td,
+        article, aside, canvas, details, embed,
+        figure, figcaption, footer, header, hgroup,
+        menu, nav, output, ruby, section, summary,
+        time, mark, audio, video {
+            margin: 0;
+            padding: 0;
+            border: 0;
+            font-size: 100%;
+            font: inherit;
+            vertical-align: baseline;
+        }
+
+        /* HTML5 display-role reset for older browsers */
+        article, aside, details, figcaption, figure,
+        footer, header, hgroup, menu, nav, section {
+            display: block;
+        }
+
+        body {
+            line-height: 1;
+        }
+
+        ol, ul {
+            list-style: none;
+        }
+
+        blockquote, q {
+            quotes: none;
+        }
+
+        blockquote:before, blockquote:after,
+        q:before, q:after {
+            content: '';
+            content: none;
+        }
+
+        table {
+            border-collapse: collapse;
+            border-spacing: 0;
+        }
+
+    </style>
+</head>
+<body>
+<script src='https://player.polyv.net/script/player.js'></script>
+<div id='player'></div>
+<script>
+    function getQueryString(name) {
+        const url_string = window.location.href; // window.location.href
+        const url = new URL(url_string);
+        return url.searchParams.get(name);
+    }
+
+    var player = polyvPlayer({
+        'wrap': '#player',
+        'ban_history_time': 'on',
+        'loop': false, //是否循环播放
+        'volume': 1, //视频默认音量大小，
+        'df': 3, //视频默认清晰度
+        'hideRepeat': false, //播放结束后是否显示重播面板
+        'speed': 1, //设置为false则关闭倍速
+        'showHd': false, //是否显示清晰度选择
+        'watchEndTime': undefined, //播放到第几秒结束播放
+        'skinLocation': 0, //控制栏显示在视频区域内外或不显示
+        'hideSwitchPlayer': true, //是否禁止显示HTML5与flash播放器切换按钮
+        'ban_seek': "on", //禁止拖拽
+        'preloadDataSize': 60000, //视频缓冲
+        'preloadDurationLength': 1200,
+        'is_interaction': "off", //是否显示课堂问答
+        'vid': getQueryString("vid"),
+        'playsafe': getQueryString("token") // 播放加密视频的凭证, 取值参考文档: https://help.polyv.net/index.html#/vod/api/playsafe/token/create_token
+    });
+
+    // document.onkeydown = function (e){
+    //     var keyNum = window.event ? e.keyCode:e.which;
+    //     console.log(keyNum);
+    // }
+
+</script>
+
+</body>
+</html>
